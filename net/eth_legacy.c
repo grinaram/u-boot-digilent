@@ -237,6 +237,7 @@ int eth_unregister(struct eth_device *dev)
 
 int eth_initialize(void)
 {
+	printf("We came to eth_initialize (legacy) function (grinar)\n");
 	int num_devices = 0;
 
 	eth_devices = NULL;
@@ -288,7 +289,7 @@ int eth_initialize(void)
 		eth_current_changed();
 		putc('\n');
 	}
-
+	printf("We are about to leave eth_initialize (grinar)\n");
 	return num_devices;
 }
 
