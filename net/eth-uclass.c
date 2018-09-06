@@ -405,16 +405,27 @@ int eth_initialize(void)
 		struct udevice *prime_dev = NULL;
 
 		if (ethprime)
+		{
+			printf("ethprime is NOT false (grinar)\n");
 			prime_dev = eth_get_dev_by_name(ethprime);
+		}
+		else 
+			printf("ethprime is false (grinar)\n");
 		if (prime_dev) {
+			printf("prime_dev is NOT false (grinar)\n");
 			eth_set_dev(prime_dev);
+			printf("before eth_current_changed (grinar)\n");
 			eth_current_changed();
+			printf("after eth_current_changed (grinar)\n");
 		} else {
+			printf("prime_dev is false (grinar)\n");
 			eth_set_dev(NULL);
 		}
-
+		printf("before bootstage_mark (grinar)\n");
 		bootstage_mark(BOOTSTAGE_ID_NET_ETH_INIT);
+		printf("after bootstage_mark (grinar)\n");
 		do {
+			printf("do: start %d (grinar)\n", num_devices);
 			if (num_devices)
 				printf(", ");
 
