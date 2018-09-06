@@ -384,11 +384,12 @@ int eth_rx(void)
 
 int eth_initialize(void)
 {
+	printf("We came to eth_initialize (uclass) function (grinar)\n");
 	int num_devices = 0;
 	struct udevice *dev;
 
 	eth_common_init();
-
+	printf("We passed eth_common_init (grinar)\n");
 	/*
 	 * Devices need to write the hwaddr even if not started so that Linux
 	 * will have access to the hwaddr that u-boot stored for the device.
@@ -430,7 +431,7 @@ int eth_initialize(void)
 
 		putc('\n');
 	}
-
+	printf("We are about to leave eth_initialize (grinar)\n");
 	return num_devices;
 }
 
@@ -456,6 +457,7 @@ static int eth_pre_unbind(struct udevice *dev)
 
 static int eth_post_probe(struct udevice *dev)
 {
+	printf("\nWe come to eth_post_probe function (grinar)\n");
 	struct eth_device_priv *priv = dev->uclass_priv;
 	struct eth_pdata *pdata = dev->platdata;
 	unsigned char env_enetaddr[6];
